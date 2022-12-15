@@ -2,11 +2,12 @@
   "name": "counter-mongodb",
   "version": "1.0.0",
   "description": "Creating a simple counter application where the count is stored in the database",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint . --fix",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

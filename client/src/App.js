@@ -3,10 +3,10 @@ import './App.css';
 
 function App() {
   const [val, setVal] = useState();
-  const apiURL = `${process.env.REACT_APP_API_URL}/refresh`;
-  const incURL = `${process.env.REACT_APP_API_URL}/increment`;
-  const decURL = `${process.env.REACT_APP_API_URL}/decrement`;
-  const resURL = `${process.env.REACT_APP_API_URL}/reset`;
+  const apiURL = `${process.env.REACT_APP_API_BASE_URL}/api/refresh`;
+  const incURL = `${process.env.REACT_APP_API_BASE_URL}/api/increment`;
+  const decURL = `${process.env.REACT_APP_API_BASE_URL}/api/decrement`;
+  const resURL = `${process.env.REACT_APP_API_BASE_URL}/api/reset`;
 
   async function apiCall(api) {
     await fetch(api);

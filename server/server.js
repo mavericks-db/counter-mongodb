@@ -53,6 +53,6 @@ app.get('/', (req, res) => {
 
 app.listen(process.env.PORT || 5000, () => {
   console.log(
-    `Server started running at ${process.env.HOST}${process.env.PORT}`,
+    `Server started running at http://${process.env.HOST}:${process.env.PORT}`,
   );
 });

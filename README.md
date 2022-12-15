@@ -9,13 +9,19 @@
 
 ## Built With 🛠️
 
-- [x] Languages: HTML, Sass and JavaScript
-- [x] Linters: ESLint
-- [x] Front-end library: React
-- [x] Back-end library: Node.JS and Express.JS
-- [x] Database: MongoDB
-- [x] Deployment: Railway
-- [x] Code Editor: VS Code
+- [x] Languages: [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [Sass](https://sass-lang.com/) and [JavaScript](https://www.javascript.com/)
+- [x] Linters: [ESLint](https://eslint.org/)
+- [x] Front-end library: [React](https://reactjs.org/)
+- [x] Back-end library: [Node.JS](https://nodejs.org/) and [Express.JS](https://expressjs.com/)
+- [x] Database: [MongoDB](https://www.mongodb.com/home)
+- [x] Deployment: [Railway](https://railway.app/)
+- [x] Code Editor: [VS Code](https://code.visualstudio.com/)
+
+## Live Demo 🔗
+
+Check the live demo:
+- [x] [Frontend](https://counter-mongodb-client.up.railway.app/)👈
+- [x] [Backend](https://counter-mongodb-server.up.railway.app/)👈
 
 ## Getting Started
 
