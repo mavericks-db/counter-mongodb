@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 
 function App() {
   const [val, setVal] = useState();
@@ -8,8 +8,17 @@ function App() {
   const decURL = `${process.env.REACT_APP_API_BASE_URL}/api/decrement`;
   const resURL = `${process.env.REACT_APP_API_BASE_URL}/api/reset`;
 
-  async function apiCall(api) {
-    await fetch(api);
+  const [decr, setDecr] = useState(1);
+  const [incr, setIncr] = useState(1);
+
+  async function apiCall(api, value) {
+    await fetch(api, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ number: value }),
+    });
   }
 
   useEffect(() => {
@@ -21,38 +30,71 @@ function App() {
     fetchData();
   }, [apiURL]);
 
-  const incHandler = () => {
-    setVal(val + 1);
-    apiCall(incURL);
-  };
-
-  const decHandler = () => {
-    setVal(val - 1);
-    apiCall(decURL);
-  };
-
   const resHandler = () => {
     setVal(0);
-    apiCall(resURL);
+    apiCall(resURL, 0);
+  };
+
+  const clickHandler = (num, api) => {
+    setVal(val + num);
+    apiCall(api, num);
+  };
+
+  const changeDecrHandler = (e) => {
+    setDecr(e.target.value);
+  };
+
+  const changeIncrHandler = (e) => {
+    setIncr(e.target.value);
+  };
+
+  const reloadHandler = () => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
     <div className="container">
       <h2>Counter</h2>
       <div className="wrapper">
-        <button type="button" className="decBtn" onClick={() => decHandler()}>
-          - Decrement
-        </button>
+        <div className="f-col">
+          <button
+            type="button"
+            className="decBtn"
+            onClick={() => clickHandler(-decr, decURL)}
+          >
+            - Decrement
+          </button>
+          <span>By:</span>
+          <input
+            type="number"
+            value={decr}
+            onChange={(e) => changeDecrHandler(e)}
+          />
+        </div>
         <h1>{val}</h1>
-        <button type="button" className="incBtn" onClick={() => incHandler()}>
-          + Increment
-        </button>
+        <div className="f-col">
+          <button
+            type="button"
+            className="incBtn"
+            onClick={() => clickHandler(+incr, incURL)}
+          >
+            + Increment
+          </button>
+          <span>By:</span>
+          <input
+            type="number"
+            value={incr}
+            onChange={(e) => changeIncrHandler(e)}
+          />
+        </div>
       </div>
       <div className="wrapper">
         <button type="button" onClick={() => resHandler()}>
           RESET
         </button>
-        <button type="button" onClick={() => window.location.reload()}>
+        <button type="button" onClick={() => reloadHandler()}>
           RELOAD
         </button>
       </div>

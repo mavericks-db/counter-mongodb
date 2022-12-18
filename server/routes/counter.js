@@ -10,7 +10,8 @@ router.get('/refresh', (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.get('/reset', (req, res) => {
+router.post('/reset', (req, res) => {
+  const { number } = req.body;
   db.collection('counters')
     .updateOne(
       {
@@ -18,7 +19,7 @@ router.get('/reset', (req, res) => {
       },
       {
         $set: {
-          count: 0,
+          count: 0 * number,
         },
       },
     )
@@ -30,7 +31,8 @@ router.get('/reset', (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.get('/increment', (req, res) => {
+router.post('/increment', (req, res) => {
+  const { number } = req.body;
   db.collection('counters')
     .updateOne(
       {
@@ -38,7 +40,7 @@ router.get('/increment', (req, res) => {
       },
       {
         $inc: {
-          count: 1,
+          count: number,
         },
       },
     )
@@ -50,7 +52,8 @@ router.get('/increment', (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.get('/decrement', (req, res) => {
+router.post('/decrement', (req, res) => {
+  const { number } = req.body;
   db.collection('counters')
     .updateOne(
       {
@@ -58,7 +61,7 @@ router.get('/decrement', (req, res) => {
       },
       {
         $inc: {
-          count: -1,
+          count: number,
         },
       },
     )
